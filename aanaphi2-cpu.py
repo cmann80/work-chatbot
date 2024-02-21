@@ -26,4 +26,6 @@ def generate(prompt, max_length=500):
     return text
 
 while True:
+    print("-----------------------------------------------------")
     print(generate(input("prompt: ")))
+    print("-----------------------------------------------------")
