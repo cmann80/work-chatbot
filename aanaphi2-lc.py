@@ -27,10 +27,11 @@ pipe = pipeline(
 local_llm = HuggingFacePipeline(pipeline=pipe)
 pipe.model.config.pad_token_id = pipe.model.config.eos_token_id
 
-template = """Conserve tokens and respond as briefly as you can.
+template = """
 ### Instruction:
 {instruction}
-Answer:"""
+Answer:
+"""
 prompt = PromptTemplate(template=template, input_variables=["instruction"])
 
 llm_chain = LLMChain(prompt=prompt, llm=local_llm)
