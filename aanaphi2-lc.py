@@ -27,7 +27,7 @@ pipe = pipeline(
 local_llm = HuggingFacePipeline(pipeline=pipe)
 pipe.model.config.pad_token_id = pipe.model.config.eos_token_id
 
-template = """Your user is a language model researcher, so plan your responses around that.
+template = """Conserve tokens and respond as briefly as you can.
 ### Instruction:
 {instruction}
 Answer:"""
@@ -37,5 +37,5 @@ llm_chain = LLMChain(prompt=prompt, llm=local_llm)
 
 while True:
     print("-----------------------------------------------------")
-    print(llm_chain.invoke(input("Prompt: ")))
+    print(llm_chain.invoke(input("Prompt: "))["text"])
     print("-----------------------------------------------------")
